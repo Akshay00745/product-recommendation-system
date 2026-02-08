@@ -38,4 +38,25 @@ Amazon product ratings dataset with the following columns:
 ### Chosen Approach: Weighted Popularity-Based Recommender
 
 Each product is scored using:
+score = average_rating × log(1 + rating_count)
+This balances:
+- **Rating quality** (how well a product is rated)
+- **User engagement** (how many users rated it)
+
+---
+
+## ⚙️ Recommendation Logic
+
+1. Compute product-level statistics (rating count & average rating)
+2. Calculate a weighted popularity score
+3. Rank products by score
+4. Recommend top products **excluding items already rated by the user**
+5. Automatically handles cold-start users
+
+---
+
+## ✅ Example Output
+
+```python
+['B001MA0QY2', 'B000ZMBSPF', 'B0043OYFKU', 'B0009V1YR8', 'B001A0OWCG']
 
